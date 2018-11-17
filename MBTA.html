@@ -1,325 +1,10 @@
 <!doctype html>
 <html>
 <head>
-<style>
-
-/*html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}*/
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-/* apply a natural box layout model to all elements, but allowing components to change */
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-
-
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;	font-size: 14px; font-style: normal;font-variant: normal;font-weight: 400;line-height: 20px; color:#000000; }
-	
-h1 { font-size: 46px; line-height: 42px; padding: 0px 0px 0px 0px; margin: 8px 0px 0px 0px; color: black; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;}
-h1 span { }
-	
-a { cursor: pointer; }
-.map-holder { position:relative; z-index:0; }
-.map-holder a { border-radius:50%; transition: opacity 0.2s ease-in; opacity:0;	animation: spin-cat-2 .1s; margin-left:-0px; margin-top:-0px; }
-.map-holder a:hover { background-color:#fff; opacity:.6; filter: blur(1px); -webkit-filter: blur(1px); -moz-filter: blur(1px); -ms-filter: blur(1px); -o-filter: blur(1px); }
-.map-holder a.active, .map-holder a:hover.active { background-color:#f6ff00; opacity:1; animation: spin-cat-1 .5s; border:2px solid #666; filter: blur(0px); -webkit-filter: blur(0px); -moz-filter: blur(0px); -ms-filter: blur(0px); -o-filter: blur(0px); }
-@keyframes spin-cat-1 {50%{-webkit-transform:scale(2,2); -ms-transform:scale(2,2); transform:scale(2,2);}}
-@keyframes spin-cat-2 {50%{-webkit-transform:scale(1,1); -ms-transform:scale(1,1); transform:scale(1,1);}}
-.station { width:18px; height:18px; position:absolute; }
-
-.shared .map-holder a:hover { opacity:0; cursor:auto;}
-.shared .map-holder a.active:hover { opacity:1; cursor:auto;}
-
-.shared .header .left { display:none; }
-.shared .right { width:100% }
-.shared .status { padding-top:38px; }
-.shared .status .description { font-size:32px; margin-bottom:20px;}
-
-.header { float:left; width:100%; left:0px; top:0px; position:fixed; z-index:10; background:white url('header-bg.gif') repeat-x scroll left bottom; }
-.topbar { height:30px; background-color:#000000; }
-.header-inner { padding:10px 20px 20px 20px; float:left; width:100%; }
-.left { float:left; width:60%; max-width:475px; }
-.right { float:right; padding:0px 0px 0px 10px; text-align:center; }
-.header .right { float:none; float: none; position: absolute; right: 10px; top:50px; }
-
-.instructions { font-weight:bold;  margin: 9px 0px 0px 0px; }
-
-.button { background-color: #219b58; display: inline-block; text-align: center; margin: 10px 0px 0px 0px; color: white; text-decoration: none; padding: 4px 10px; }
-
-.share { height:50px; }
-.share.facebook { position:relative; top:-5px; margin-left:10px; }
-#social-holder { position: absolute; background-color: #ffffff; width: 180px; left: -2px; bottom: -55px; height: 36px; padding-top: 7px; border-radius: 3px; }
-.navbar .left {  }
-.navbar .left a { color:white; }
-	
-.social-trigger-holder { margin: 2px 0px 0px 0px; float: left; width: 100%; }
-#social-trigger { text-decoration:none; }
-.share-icon { display:inline-block; width:13px; height:13px; background:transparent url('icon-fb.png') no-repeat scroll 0px 0px; background-size: cover; margin:0px 1px;}
-.share-icon.twitter { background-image:url('icon-tw.png'); }
-
-.topbar { padding:0px 23px; }
-.header-social-wrapper { position:relative; padding-right:12px;}
-.header-social-wrapper.fb {  }
-.header-social-wrapper.tw { top:5px; }
-.topbar-nav { float:right; padding:3px 0px 0px 0px; }
-
-.badge-holder { margin:0px auto; width:173px; position:relative;}
-.badge { display:inline-block; color: white; font-weight: bold; font-size: 60px; text-align: center; padding: 0px 2px 0px 0px; background-color: #000; border-radius: 50%; width: 110px; height: 110px; line-height: 110px; margin:0px 0px 0px 0px; -webkit-transition: background-color 1000ms linear; -moz-transition: background-color 200ms linear; -o-transition: background-color 200ms linear; -ms-transition: background-color 200ms linear; transition: background-color 200ms linear; }
-.badge-header { display: block; clear: both; font-weight: bold; font-size: 10px; letter-spacing: 2px; margin: 8px 0px 0px 0px; line-height: 10px; font-weight: normal; }
-.badge-title { display: block; clear: both; font-weight:bold; font-size:20px; margin:3px 0px 0px 0px; }
-
-
-body {  }
-.main { padding-top:130px; margin:0px auto; }
-.hide, #share.hide { display:none; }
-
-.status {  padding-top:10%; font-weight: bold; font-size: 17px; }
-
-.sharea { float:left; width:100%; clear:both; background-color:black; position:relative;}
-
-.sharea textarea { width: 550px; height: 80px; border-radius: 3px; padding: 5px; font-size: 15px; font-family: inherit; display:block; margin:20px auto;}
-
-.sharea .shareaclose { position: absolute; width: 30px; height: 30px; background-color: white; right: 20px; top: 20px; border-radius: 50%; color: black; text-align: center; text-decoration: none; line-height: 31px; font-size:24px; }
-
-#counter {  }
-
-table { line-height:0; }
-
-.micro { display:none !important; }
-
-body.micro {  }
-
-.credits { padding:0px 5px; text-align:center; }
-
-@media (max-width: 630px) {
-  h1 { font-size: 30px; line-height: 26px; }
-  .header p.instructions {  font-size: 12px; line-height: 19px; }
-  #badge-holder { -webkit-transform:scale(.8,.8); -ms-transform:scale(.8,.8); transform: scale(.8,.8); }
-}
-
-@media (max-width: 430px) {
-  h1 { font-size: 19px; line-height: 22px; }
-  .header p.instructions {  font-size: 12px; line-height: 15px; }
-  #badge-holder { -webkit-transform:scale(.7,.7); -ms-transform:scale(.7,.7); transform: scale(.7,.7); }
-}
-	
-</style>
+<link rel="stylesheet" href="MBTA.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
 
-$(document).ready(function() {
-	
-	
-	//Populate anything from localstorage
-	loadStatus();	
-	
-	//Do the things when you click on every subway station
-	$('.map-holder a').each(function() {
-		var id = $(this).attr('id');
-		$(this).click(function() {
-			$(this).toggleClass("active");
-			processClick();
-		});
-
-	});
-	
-	$("#social-trigger").click(function(e) {
-		e.preventDefault();
-		$("#social-holder").toggleClass("hide");	
-
-		//Prep share text
-		stationnum = $('.badge').html();
-		totalnum = 146;
-		badgetitle = $('.badge-title').html();
-		//sharetext = "I've been to "+stationnum+" of NYC's "+totalnum+" subway stations. See my map and make your own";
-		sharetext = "I've been to "+stationnum+" different @MBTA stations and earned the ranking \""+badgetitle+"\". How many have you been to?";
-		
-		// Remove existing twitter iframe
-		$('#tweetBtn iframe').remove();
-		// Generate new markup
-		var tweetBtn = $('<a></a>')
-			.addClass('twitter-share-button')
-			.attr('href', 'http://twitter.com/share')
-			.attr('data-url', 'http://thecleverest.com/t/')
-			.attr('data-count', 'none')
-			.attr('data-text', sharetext);
-		$('#tweetBtn').append(tweetBtn);
-		twttr.widgets.load();
-	
-	});
-	
-	
-	
-	
-	
-	
-	
-	
-		
-}); //End documentready
-
-
-
-function init() {
-	adjustTopPadding();	
-	formatHeader();	
-}
-
-
-
-updateCounter = function(e) {
-	$('#counter').html(e);
-	$('.badge').html(e);
-	var strlen = e.toString();
-	
-	//alert(strlen);
-	if (strlen < 10) {
-		$('.badge').css("font-size", "71px");
-	} else if (strlen < 100) {
-		$('.badge').css("font-size", "59px");
-	} else {
-		$('.badge').css("font-size", "42px");
-	}
-	
-	changeBadge = function(bgColor, textColor, badgeTitle) {
-		$('.badge').css("background-color", bgColor);
-		$('.topbar').css("background-color", bgColor);
-		$('.badge').css("color", textColor);
-		$('.badge-title').html(badgeTitle);
-	}
-	
-	//assign the badges
-	if (strlen == 0) {
-		changeBadge("#000","#fff","Yankees Fan")
-	}
-	
-	if (strlen == 1) {
-		changeBadge("#118448","#ffffff","I Can't Even")
-	}
-	
-	if (strlen > 1 && strlen <= 10 ) {
-		changeBadge("#f08b1f","#ffffff","Campus Tourist")
-	}
-	
-	if (strlen > 10 && strlen <= 30 ) {
-		changeBadge("#118448","#ffffff","BC Dropout")
-	}
-	
-	if (strlen > 30 && strlen <= 50 ) {
-		changeBadge("#e32525","#ffffff","Interlopah")
-	}
-	
-	if (strlen > 50 && strlen <= 70 ) {
-		changeBadge("#f08b1f","#ffffff","Jr. Resident")
-	}
-	
-	if (strlen > 70 && strlen <= 100 ) {
-		changeBadge("#007bc1","#ffffff","Townie")
-	}
-	
-	if (strlen > 100 && strlen < 146 ) {
-		changeBadge("#7e878d","#ffffff","Wahlberg")
-	}
-		
-	if (strlen == 146 ) {
-		changeBadge("#000","#ffffff","Charlie")
-	}
-	
-}
-
-processClick = function() {
-	//Create empty temp array
-	var checkedItems = [];
-	
-	//loop through tags that have "active" in the title, and add them to the localstorage array
-	var actives = document.getElementsByClassName('active');
-	
-	//Track if you clicked at least 1 subway. I want to encourage more clicking and improve bounce rates!
-	if (actives.length == 1) {
-		//alert('trigger ga');
-		//pageTracker._trackEvent('ClickNYSubway', 'clickAtLeast1Station', 'Set up for GA Test');
-	}
-	
-	for (var i = 0; i < actives.length; ++i) {
-		var item = actives[i];  
-		var selected = $(item).attr('id');
-		//console.log(selected);
-		checkedItems.push(selected);
-	}
-	
-	//update counter
-	updateCounter(actives.length);
-	
-	//save to local storage
-	localStorage["checkedItems"] = JSON.stringify(checkedItems);
-}
-
-
-loadStatus = function() {
-
-	if (localStorage["checkedItems"]) { 
-		var storedNames = JSON.parse(localStorage["checkedItems"]);
-	} else {
-		var storedNames = "";
-	}
-	
-	//console.log(storedNames);
-	for (var i = 0; i < storedNames.length; ++i) {
-		var item = storedNames[i];  
-		$("[id='"+item+"']").addClass('active');
-	}
-
-	//update counter
-	updateCounter(storedNames.length);
-	
-}
-
-</script>
 <meta name="viewport" content="width=device-width, initial-scale=.5">
 <meta charset="UTF-8">
 
@@ -329,54 +14,48 @@ loadStatus = function() {
 <body>
 
 <div class="main">
-<div id="header" class="header">
-
-</div><!-- end div header -->
+<header>
+	<h1>Are you taking the T today?</h1>
+	<h2>Check the status by clicking on a stop</h2>
+</header><!-- end header -->
 
 <div class="map-holder">
-<img src="subway-spider.jpg" width="1200" height="1214" />
+<img src="subway-spider.jpg"  />
 
-<a style="left:798px; top:32px;" class="station" id="BoYRL_color"></a><a style="left:797px; top:66px;" class="station" id="2kOGf_color"></a><a style="left:799px; top:100px;" class="station" id="nhMFb_color"></a><a style="left:797px; top:134px;" class="station" id="JWD54_color"></a><a style="left:797px; top:167px;" class="station" id="QvY5w_color"></a><a style="left:798px; top:201px;" class="station" id="S4UXD_color"></a><a style="left:799px; top:282px;" class="station" id="9UOU0_color"></a><a style="left:777px; top:260px;" class="station" id="pBRwF_color"></a><a style="left:755px; top:239px;" class="station" id="uCuXo_color"></a><a style="left:797px; top:343px;" class="station" id="6utTv_color"></a><a style="left:1140px; top:81px;" class="station" id="wSamj_color"></a><a style="left:1100px; top:119px;" class="station" id="8ZcQ9_color"></a><a style="left:1067px; top:151px;" class="station" id="WW4Aa_color"></a><a style="left:1035px; top:184px;" class="station" id="J4M1D_color"></a><a style="left:1002px; top:215px;" class="station" id="BPjHy_color"></a><a style="left:969px; top:249px;" class="station" id="0QrcL_color"></a><a style="left:941px; top:277px;" class="station" id="KmYWI_color"></a><a style="left:917px; top:302px;" class="station" id="GMylI_color"></a><a style="left:845px; top:374px;" class="station" id="zXfgG_color"></a><a style="left:797px; top:414px;" class="station" id="BrnC5_color"></a><a style="left:722px; top:348px;" class="station" id="3uaWD_color"></a><a style="left:1038px; top:347px;" class="station" id="RMhLm_color"></a><a style="left:1054px; top:363px;" class="station" id="jqcha_color"></a><a style="left:1064px; top:392px;" class="station" id="BPRQf_color"></a><a style="left:1050px; top:404px;" class="station" id="Im3fJ_color"></a><a style="left:1021px; top:378px;" class="station" id="rigza_color"></a><a style="left:963px; top:575px;" class="station" id="fuELA_color"></a><a style="left:1010px; top:568px;" class="station" id="dP73C_color"></a><a style="left:989px; top:557px;" class="station" id="eDPlx_color"></a><a style="left:967px; top:557px;" class="station" id="enCHA_color"></a><a style="left:941px; top:553px;" class="station" id="bOyIo_color"></a><a style="left:928px; top:540px;" class="station" id="kizdo_color"></a><a style="left:914px; top:523px;" class="station" id="2vIB3_color"></a><a style="left:893px; top:524px;" class="station" id="nJjtC_color"></a><a style="left:871px; top:523px;" class="station" id="GFm1t_color"></a><a style="left:824px; top:523px;" class="station" id="9TJxD_color"></a><a style="left:802px; top:523px;" class="station" id="bm21s_color"></a><a style="left:720px; top:523px;" class="station" id="JFc7f_color"></a><a style="left:664px; top:581px;" class="station" id="PtOgx_color"></a><a style="left:859px; top:626px;" class="station" id="F6ixP_color"></a><a style="left:859px; top:679px;" class="station" id="b5XEY_color"></a><a style="left:858px; top:730px;" class="station" id="KJdeQ_color"></a><a style="left:663px; top:603px;" class="station" id="KJ5y1_color"></a><a style="left:664px; top:623px;" class="station" id="Xj8us_color"></a><a style="left:663px; top:644px;" class="station" id="ipRw8_color"></a><a style="left:665px; top:666px;" class="station" id="Vun4y_color"></a><a style="left:662px; top:685px;" class="station" id="ncLY1_color"></a><a style="left:663px; top:707px;" class="station" id="l3uSF_color"></a><a style="left:664px; top:728px;" class="station" id="v1vF8_color"></a><a style="left:663px; top:750px;" class="station" id="mswsS_color"></a><a style="left:663px; top:770px;" class="station" id="FGCbH_color"></a><a style="left:810px; top:849px;" class="station" id="rzlAk_color"></a><a style="left:810px; top:875px;" class="station" id="VWhR6_color"></a><a style="left:811px; top:899px;" class="station" id="Ompq9_color"></a><a style="left:809px; top:927px;" class="station" id="0ulIU_color"></a><a style="left:809px; top:960px;" class="station" id="TSTho_color"></a><a style="left:795px; top:984px;" class="station" id="hWhWn_color"></a><a style="left:771px; top:984px;" class="station" id="iH5DX_color"></a><a style="left:743px; top:983px;" class="station" id="gqciB_color"></a><a style="left:718px; top:984px;" class="station" id="Furrq_color"></a><a style="left:691px; top:984px;" class="station" id="J9Ek9_color"></a><a style="left:664px; top:984px;" class="station" id="hZuDv_color"></a><a style="left:938px; top:874px;" class="station" id="SdeSY_color"></a><a style="left:975px; top:909px;" class="station" id="RykLW_color"></a><a style="left:1007px; top:942px;" class="station" id="4s0Qi_color"></a><a style="left:1033px; top:980px;" class="station" id="QnaCq_color"></a><a style="left:1035px; top:1033px;" class="station" id="Bdors_color"></a><a style="left:380px; top:866px;" class="station" id="GkoU7_color"></a><a style="left:417px; top:825px;" class="station" id="6ywOK_color"></a><a style="left:458px; top:785px;" class="station" id="R6pmJ_color"></a><a style="left:498px; top:745px;" class="station" id="iG1km_color"></a><a style="left:538px; top:707px;" class="station" id="UjSrl_color"></a><a style="left:570px; top:675px;" class="station" id="A6jr3_color"></a><a style="left:601px; top:644px;" class="station" id="E8VaR_color"></a><a style="left:629px; top:614px;" class="station" id="1bnSP_color"></a><a style="left:770px; top:472px;" class="station" id="KgEIB_color"></a><a style="left:758px; top:382px;" class="station" id="2qiVH_color"></a><a style="left:720px; top:422px;" class="station" id="QJekW_color"></a><a style="left:687px; top:471px;" class="station" id="IGnst_color"></a><a style="left:662px; top:471px;" class="station" id="fj3Y9_color"></a><a style="left:612px; top:475px;" class="station" id="HTmqD_color"></a><a style="left:559px; top:474px;" class="station" id="F2qR2_color"></a><a style="left:506px; top:473px;" class="station" id="szTKx_color"></a><a style="left:525px; top:506px;" class="station" id="nnBmN_color"></a><a style="left:454px; top:473px;" class="station" id="OLIKZ_color"></a><a style="left:525px; top:570px;" class="station" id="HuwV4_color"></a><a style="left:511px; top:585px;" class="station" id="mzvSF_color"></a><a style="left:495px; top:602px;" class="station" id="6LD38_color"></a><a style="left:479px; top:617px;" class="station" id="RotdU_color"></a><a style="left:463px; top:633px;" class="station" id="d6rkp_color"></a><a style="left:448px; top:651px;" class="station" id="OiI1M_color"></a><a style="left:431px; top:666px;" class="station" id="yuEzZ_color"></a><a style="left:415px; top:681px;" class="station" id="7YaOs_color"></a><a style="left:398px; top:699px;" class="station" id="O23vp_color"></a><a style="left:383px; top:714px;" class="station" id="an8af_color"></a><a style="left:405px; top:500px;" class="station" id="CzKVx_color"></a><a style="left:386px; top:519px;" class="station" id="tAKOo_color"></a><a style="left:369px; top:538px;" class="station" id="HYJuK_color"></a><a style="left:348px; top:558px;" class="station" id="EnO60_color"></a><a style="left:331px; top:576px;" class="station" id="QaV6h_color"></a><a style="left:312px; top:595px;" class="station" id="PaWsr_color"></a><a style="left:294px; top:613px;" class="station" id="tBUTE_color"></a><a style="left:273px; top:631px;" class="station" id="SjApU_color"></a><a style="left:255px; top:652px;" class="station" id="bV17k_color"></a><a style="left:235px; top:669px;" class="station" id="Exdh7_color"></a><a style="left:218px; top:689px;" class="station" id="Wpouc_color"></a><a style="left:198px; top:706px;" class="station" id="1VidN_color"></a><a style="left:167px; top:722px;" class="station" id="CU2sE_color"></a><a style="left:386px; top:463px;" class="station" id="9i9tM_color"></a><a style="left:371px; top:446px;" class="station" id="cocKl_color"></a><a style="left:351px; top:428px;" class="station" id="dIS8O_color"></a><a style="left:292px; top:425px;" class="station" id="YXAzA_color"></a><a style="left:273px; top:443px;" class="station" id="vYWlR_color"></a><a style="left:258px; top:458px;" class="station" id="62qWg_color"></a><a style="left:239px; top:477px;" class="station" id="WnCDK_color"></a><a style="left:221px; top:496px;" class="station" id="WWnAo_color"></a><a style="left:201px; top:515px;" class="station" id="nFbQg_color"></a><a style="left:182px; top:532px;" class="station" id="fgIP8_color"></a><a style="left:165px; top:552px;" class="station" id="dHWi0_color"></a><a style="left:144px; top:571px;" class="station" id="2DiTv_color"></a><a style="left:114px; top:587px;" class="station" id="FzOnk_color"></a><a style="left:423px; top:458px;" class="station" id="c6j4l_color"></a><a style="left:407px; top:442px;" class="station" id="Iugyq_color"></a><a style="left:388px; top:423px;" class="station" id="9FIJ2_color"></a><a style="left:372px; top:408px;" class="station" id="FOmU7_color"></a><a style="left:352px; top:389px;" class="station" id="MFBD1_color"></a><a style="left:336px; top:371px;" class="station" id="pl0qK_color"></a><a style="left:316px; top:353px;" class="station" id="yhDoy_color"></a><a style="left:297px; top:334px;" class="station" id="1THBx_color"></a><a style="left:272px; top:324px;" class="station" id="vX6PX_color"></a><a style="left:244px; top:334px;" class="station" id="aCzVh_color"></a><a style="left:227px; top:351px;" class="station" id="kmaU2_color"></a><a style="left:209px; top:369px;" class="station" id="GRkvP_color"></a><a style="left:192px; top:387px;" class="station" id="CKBsC_color"></a><a style="left:173px; top:405px;" class="station" id="l3RcK_color"></a><a style="left:156px; top:423px;" class="station" id="pQEg4_color"></a><a style="left:138px; top:441px;" class="station" id="B5LqM_color"></a><a style="left:120px; top:458px;" class="station" id="TxWFG_color"></a><a style="left:90px; top:474px;" class="station" id="HGmGt_color"></a><a style="left:414px; top:115px;" class="station" id="MwdhG_color"></a><a style="left:458px; top:158px;" class="station" id="68PFk_color"></a><a style="left:502px; top:202px;" class="station" id="N6hdk_color"></a><a style="left:545px; top:245px;" class="station" id="p6KkW_color"></a><a style="left:587px; top:289px;" class="station" id="wu6iG_color"></a><a style="left:632px; top:333px;" class="station" id="U1ctt_color"></a><a style="left:684px; top:385px;" class="station" id="WvduS_color"></a></div><!-- end map holder main -->
+<a style="left:798px; top:32px;" class="station" id="BoYRL_color"></a>
+<a style="left:797px; top:66px;" class="station" id="2kOGf_color"></a>
+<a style="left:799px; top:100px;" class="station" id="nhMFb_color"></a>
+<a style="left:797px; top:134px;" class="station" id="JWD54_color"></a>
+<a style="left:797px; top:167px;" class="station" id="QvY5w_color"></a>
+<a style="left:798px; top:201px;" class="station" id="S4UXD_color"></a>
+<a style="left:799px; top:282px;" class="station" id="9UOU0_color"></a>
+<a style="left:777px; top:260px;" class="station" id="pBRwF_color"></a>
+<a style="left:755px; top:239px;" class="station" id="uCuXo_color"></a>
+<a style="left:797px; top:343px;" class="station" id="6utTv_color"></a><a style="left:1140px; top:81px;" class="station" id="wSamj_color"></a><a style="left:1100px; top:119px;" class="station" id="8ZcQ9_color"></a><a style="left:1067px; top:151px;" class="station" id="WW4Aa_color"></a><a style="left:1035px; top:184px;" class="station" id="J4M1D_color"></a><a style="left:1002px; top:215px;" class="station" id="BPjHy_color"></a><a style="left:969px; top:249px;" class="station" id="0QrcL_color"></a><a style="left:941px; top:277px;" class="station" id="KmYWI_color"></a><a style="left:917px; top:302px;" class="station" id="GMylI_color"></a><a style="left:845px; top:374px;" class="station" id="zXfgG_color"></a><a style="left:797px; top:414px;" class="station" id="BrnC5_color"></a><a style="left:722px; top:348px;" class="station" id="3uaWD_color"></a><a style="left:1038px; top:347px;" class="station" id="RMhLm_color"></a><a style="left:1054px; top:363px;" class="station" id="jqcha_color"></a><a style="left:1064px; top:392px;" class="station" id="BPRQf_color"></a><a style="left:1050px; top:404px;" class="station" id="Im3fJ_color"></a><a style="left:1021px; top:378px;" class="station" id="rigza_color"></a><a style="left:963px; top:575px;" class="station" id="fuELA_color"></a><a style="left:1010px; top:568px;" class="station" id="dP73C_color"></a><a style="left:989px; top:557px;" class="station" id="eDPlx_color"></a><a style="left:967px; top:557px;" class="station" id="enCHA_color"></a><a style="left:941px; top:553px;" class="station" id="bOyIo_color"></a><a style="left:928px; top:540px;" class="station" id="kizdo_color"></a><a style="left:914px; top:523px;" class="station" id="2vIB3_color"></a><a style="left:893px; top:524px;" class="station" id="nJjtC_color"></a><a style="left:871px; top:523px;" class="station" id="GFm1t_color"></a><a style="left:824px; top:523px;" class="station" id="9TJxD_color"></a><a style="left:802px; top:523px;" class="station" id="bm21s_color"></a><a style="left:720px; top:523px;" class="station" id="JFc7f_color"></a><a style="left:664px; top:581px;" class="station" id="PtOgx_color"></a><a style="left:859px; top:626px;" class="station" id="F6ixP_color"></a><a style="left:859px; top:679px;" class="station" id="b5XEY_color"></a><a style="left:858px; top:730px;" class="station" id="KJdeQ_color"></a><a style="left:663px; top:603px;" class="station" id="KJ5y1_color"></a><a style="left:664px; top:623px;" class="station" id="Xj8us_color"></a><a style="left:663px; top:644px;" class="station" id="ipRw8_color"></a><a style="left:665px; top:666px;" class="station" id="Vun4y_color"></a><a style="left:662px; top:685px;" class="station" id="ncLY1_color"></a><a style="left:663px; top:707px;" class="station" id="l3uSF_color"></a><a style="left:664px; top:728px;" class="station" id="v1vF8_color"></a><a style="left:663px; top:750px;" class="station" id="mswsS_color"></a><a style="left:663px; top:770px;" class="station" id="FGCbH_color"></a><a style="left:810px; top:849px;" class="station" id="rzlAk_color"></a><a style="left:810px; top:875px;" class="station" id="VWhR6_color"></a><a style="left:811px; top:899px;" class="station" id="Ompq9_color"></a><a style="left:809px; top:927px;" class="station" id="0ulIU_color"></a><a style="left:809px; top:960px;" class="station" id="TSTho_color"></a><a style="left:795px; top:984px;" class="station" id="hWhWn_color"></a><a style="left:771px; top:984px;" class="station" id="iH5DX_color"></a><a style="left:743px; top:983px;" class="station" id="gqciB_color"></a><a style="left:718px; top:984px;" class="station" id="Furrq_color"></a><a style="left:691px; top:984px;" class="station" id="J9Ek9_color"></a><a style="left:664px; top:984px;" class="station" id="hZuDv_color"></a><a style="left:938px; top:874px;" class="station" id="SdeSY_color"></a><a style="left:975px; top:909px;" class="station" id="RykLW_color"></a><a style="left:1007px; top:942px;" class="station" id="4s0Qi_color"></a><a style="left:1033px; top:980px;" class="station" id="QnaCq_color"></a><a style="left:1035px; top:1033px;" class="station" id="Bdors_color"></a><a style="left:380px; top:866px;" class="station" id="GkoU7_color"></a><a style="left:417px; top:825px;" class="station" id="6ywOK_color"></a><a style="left:458px; top:785px;" class="station" id="R6pmJ_color"></a><a style="left:498px; top:745px;" class="station" id="iG1km_color"></a><a style="left:538px; top:707px;" class="station" id="UjSrl_color"></a><a style="left:570px; top:675px;" class="station" id="A6jr3_color"></a><a style="left:601px; top:644px;" class="station" id="E8VaR_color"></a><a style="left:629px; top:614px;" class="station" id="1bnSP_color"></a><a style="left:770px; top:472px;" class="station" id="KgEIB_color"></a><a style="left:758px; top:382px;" class="station" id="2qiVH_color"></a><a style="left:720px; top:422px;" class="station" id="QJekW_color"></a><a style="left:687px; top:471px;" class="station" id="IGnst_color"></a><a style="left:662px; top:471px;" class="station" id="fj3Y9_color"></a><a style="left:612px; top:475px;" class="station" id="HTmqD_color"></a><a style="left:559px; top:474px;" class="station" id="F2qR2_color"></a><a style="left:506px; top:473px;" class="station" id="szTKx_color"></a><a style="left:525px; top:506px;" class="station" id="nnBmN_color"></a><a style="left:454px; top:473px;" class="station" id="OLIKZ_color"></a><a style="left:525px; top:570px;" class="station" id="HuwV4_color"></a><a style="left:511px; top:585px;" class="station" id="mzvSF_color"></a><a style="left:495px; top:602px;" class="station" id="6LD38_color"></a><a style="left:479px; top:617px;" class="station" id="RotdU_color"></a><a style="left:463px; top:633px;" class="station" id="d6rkp_color"></a><a style="left:448px; top:651px;" class="station" id="OiI1M_color"></a><a style="left:431px; top:666px;" class="station" id="yuEzZ_color"></a><a style="left:415px; top:681px;" class="station" id="7YaOs_color"></a><a style="left:398px; top:699px;" class="station" id="O23vp_color"></a><a style="left:383px; top:714px;" class="station" id="an8af_color"></a><a style="left:405px; top:500px;" class="station" id="CzKVx_color"></a><a style="left:386px; top:519px;" class="station" id="tAKOo_color"></a><a style="left:369px; top:538px;" class="station" id="HYJuK_color"></a><a style="left:348px; top:558px;" class="station" id="EnO60_color"></a><a style="left:331px; top:576px;" class="station" id="QaV6h_color"></a><a style="left:312px; top:595px;" class="station" id="PaWsr_color"></a><a style="left:294px; top:613px;" class="station" id="tBUTE_color"></a><a style="left:273px; top:631px;" class="station" id="SjApU_color"></a><a style="left:255px; top:652px;" class="station" id="bV17k_color"></a><a style="left:235px; top:669px;" class="station" id="Exdh7_color"></a><a style="left:218px; top:689px;" class="station" id="Wpouc_color"></a><a style="left:198px; top:706px;" class="station" id="1VidN_color"></a><a style="left:167px; top:722px;" class="station" id="CU2sE_color"></a><a style="left:386px; top:463px;" class="station" id="9i9tM_color"></a><a style="left:371px; top:446px;" class="station" id="cocKl_color"></a><a style="left:351px; top:428px;" class="station" id="dIS8O_color"></a><a style="left:292px; top:425px;" class="station" id="YXAzA_color"></a><a style="left:273px; top:443px;" class="station" id="vYWlR_color"></a><a style="left:258px; top:458px;" class="station" id="62qWg_color"></a><a style="left:239px; top:477px;" class="station" id="WnCDK_color"></a><a style="left:221px; top:496px;" class="station" id="WWnAo_color"></a><a style="left:201px; top:515px;" class="station" id="nFbQg_color"></a><a style="left:182px; top:532px;" class="station" id="fgIP8_color"></a><a style="left:165px; top:552px;" class="station" id="dHWi0_color"></a><a style="left:144px; top:571px;" class="station" id="2DiTv_color"></a><a style="left:114px; top:587px;" class="station" id="FzOnk_color"></a><a style="left:423px; top:458px;" class="station" id="c6j4l_color"></a><a style="left:407px; top:442px;" class="station" id="Iugyq_color"></a><a style="left:388px; top:423px;" class="station" id="9FIJ2_color"></a><a style="left:372px; top:408px;" class="station" id="FOmU7_color"></a><a style="left:352px; top:389px;" class="station" id="MFBD1_color"></a><a style="left:336px; top:371px;" class="station" id="pl0qK_color"></a><a style="left:316px; top:353px;" class="station" id="yhDoy_color"></a><a style="left:297px; top:334px;" class="station" id="1THBx_color"></a><a style="left:272px; top:324px;" class="station" id="vX6PX_color"></a><a style="left:244px; top:334px;" class="station" id="aCzVh_color"></a><a style="left:227px; top:351px;" class="station" id="kmaU2_color"></a><a style="left:209px; top:369px;" class="station" id="GRkvP_color"></a><a style="left:192px; top:387px;" class="station" id="CKBsC_color"></a><a style="left:173px; top:405px;" class="station" id="l3RcK_color"></a><a style="left:156px; top:423px;" class="station" id="pQEg4_color"></a><a style="left:138px; top:441px;" class="station" id="B5LqM_color"></a><a style="left:120px; top:458px;" class="station" id="TxWFG_color"></a><a style="left:90px; top:474px;" class="station" id="HGmGt_color"></a><a style="left:414px; top:115px;" class="station" id="MwdhG_color"></a><a style="left:458px; top:158px;" class="station" id="68PFk_color"></a><a style="left:502px; top:202px;" class="station" id="N6hdk_color"></a><a style="left:545px; top:245px;" class="station" id="p6KkW_color"></a><a style="left:587px; top:289px;" class="station" id="wu6iG_color"></a><a style="left:632px; top:333px;" class="station" id="U1ctt_color"></a><a style="left:684px; top:385px;" class="station" id="WvduS_color"></a></div><!-- end map holder main -->
+<div class="line">
+	<section id="line1Section">
+	</section>
+	<section id="line1Delays">
+	</section>
+</div>
+<div class="line">
+	<section id="line2Section">
+	</section>
+	<section id="line2Delays">
+	</section>
+</div>
+<div class="line">
+	<section id="line3Section">
+	</section>
+	<section id="line3Delays">
+	</section>
+</div>
 <div class="credits">
-<p>Created by <a href="https://twitter.com/solomania/" target="_blank">Mike Solomon</a> | Rankings created with the help of Reddit users <a href="https://www.reddit.com/r/boston/comments/3hqerz/how_many_subway_stations_have_you_been_to/cu9pplw" target="_blank">theshoegazer</a>, <a href="https://www.reddit.com/r/boston/comments/3hqerz/how_many_subway_stations_have_you_been_to/cu9n3bf" target="_blank">i_have_severe</a>, and <a href="https://www.reddit.com/r/boston/comments/3hqerz/how_many_subway_stations_have_you_been_to/cu9ou85" target="_blank">TerrMys</a></p>
+<p>Created by Jennifer Koonz and Ariana Lema-Driscoll <br>
+	Thanks to <a href="https://www.girldevelopit.com/chapters/boston" target="_blank">GDI Boston</a> for hosting this <a href="https://www.meetup.com/Girl-Develop-It-Boston/events/254972491/" target="_blank">Hackathon!</a></p>
 </div>
 </div><!-- end div main -->
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-2698821-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-
 </body>
-<script>
-	
-	function adjustTopPadding() {
-		var headerheight = $('.header').height();
-	  	//console.log(headerheight);
-	  	headerheight = headerheight;
-		$('.main').css("padding-top", ""+headerheight+"px");	  
-	}
-	
-	function formatHeader() {
-		console.log(window.innerWidth);
-		if (window.innerWidth < 675) {
-			//$('body').addClass('micro');
-		}
-	}
-	
-	init();
-	
-	$( window ).resize(function() {
-		adjustTopPadding();
-		formatHeader();
-	});
-
-
-</script>
+<script src="MBTA.js"></script>
 </html>

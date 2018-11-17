@@ -1,0 +1,139 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	width: 100%; /* take up full viewport width */
+    max-width: 1200px; /* if viewport is larger than 1440px,
+                            don't let it take up 100% */
+      margin: 0 auto; /* center content in the viewport */
+}
+ol, ul {
+	/*list-style: none;*/
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body { font-family: Verdana, Geneva, sans-serif;	
+	font-size: 14px; 
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px; 
+	color:#000000; 
+	background-color: #99ccff;
+}
+
+	
+a { cursor: pointer; }
+.map-holder { position:relative; z-index:0; }
+.map-holder a { border-radius:50%; transition: opacity 0.2s ease-in; opacity:0;	animation: spin-cat-2 .1s; margin-left:-0px; margin-top:-0px; }
+.map-holder a:hover { background-color:#fff; opacity:.6; filter: blur(1px); -webkit-filter: blur(1px); -moz-filter: blur(1px); -ms-filter: blur(1px); -o-filter: blur(1px); }
+.map-holder a.active, .map-holder a:hover.active { background-color:#f6ff00; opacity:1; animation: spin-cat-1 .5s; border:2px solid #666; filter: blur(0px); -webkit-filter: blur(0px); -moz-filter: blur(0px); -ms-filter: blur(0px); -o-filter: blur(0px); }
+/*@keyframes spin-cat-1 {50%{-webkit-transform:scale(2,2); -ms-transform:scale(2,2); transform:scale(2,2);}}
+@keyframes spin-cat-2 {50%{-webkit-transform:scale(1,1); -ms-transform:scale(1,1); transform:scale(1,1);}} */
+.station { width:18px; height:18px; position:absolute; }
+/*
+.shared .map-holder a:hover { opacity:0; cursor:auto;}
+.shared .map-holder a.active:hover { opacity:1; cursor:auto;}
+
+.shared .header .left { display:none; }
+.shared .right { width:100% }
+.shared .status { padding-top:38px; }
+.shared .status .description { font-size:32px; margin-bottom:20px;}
+
+*/
+
+header h1 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 60px;
+	font-weight: bold;
+	text-align: center;
+	color: #003366;
+	padding: 20px;
+}
+header h2 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 40px;
+	text-align: center;
+	color: #003366;
+	padding: 20px;
+}
+
+li {
+	display: list-item;
+	list-style-type: circle;
+	padding: 10px;
+}
+
+body {  }
+/*.main { padding-top:130px; margin:0px auto; }
+.hide, #share.hide { display:none; }
+
+.status {  padding-top:10%; font-weight: bold; font-size: 17px; }
+
+.sharea { float:left; width:100%; clear:both; background-color:black; position:relative;}
+
+.sharea textarea { width: 550px; height: 80px; border-radius: 3px; padding: 5px; font-size: 15px; font-family: inherit; display:block; margin:20px auto;}
+
+.sharea .shareaclose { position: absolute; width: 30px; height: 30px; background-color: white; right: 20px; top: 20px; border-radius: 50%; color: black; text-align: center; text-decoration: none; line-height: 31px; font-size:24px; }
+
+#counter {  }
+
+table { line-height:0; }
+
+.micro { display:none !important; }
+
+body.micro {  }
+*/
+
+.credits { padding:0px 5px; text-align:center; }
+
+.line {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 30px;
+	text-align: left;
+	color: #003366;
+	padding-top: 10px;
+}
+
